@@ -59,7 +59,11 @@ This project is a simple URL shortener service built with Node.js and Express.js
 
 - **URL**: `/api/redirect/:shortId`
 - **Method**: `GET`
+- **Headers**:
+  - **Key**: `referer`
+  - **Value**: `https://www.google.com/`
 - **Example**: `http://localhost:8000/api/redirect/NgzT4BGJ`
+- **Description**: This endpoint will redirect you to the original URL associated with the given `shortId`. The `referer` header can be passed to indicate the referer URL.
 
 ### 3. Analytics
 
