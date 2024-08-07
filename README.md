@@ -51,7 +51,7 @@ This project is a simple URL shortener service built with Node.js and Express.js
 - **Response**:
     ```json
     {
-        "status":"200",
+       "status":"200",
        "shortId": "NgzT4BGJ"
     }
     ```
