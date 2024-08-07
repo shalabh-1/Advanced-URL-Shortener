@@ -14,7 +14,7 @@ async function generateNewShortUrl(request, response) {
         
 
         if (!url) {
-            return response.status(400).json({ message: "Please provide a URL" });
+            return response.status(400).json({ status:"400",message: "Please provide a URL" });
         }
 
         const shortCode = nanoId(8);
@@ -31,7 +31,7 @@ async function generateNewShortUrl(request, response) {
         return response.status(200).json({status:"200",shortId: shortCode });
     } catch (error) {
         console.error('Error generating new short URL:', error);
-        return response.status(500).json({ message: "Internal Server Error" });
+        return response.status(500).json({ status:"500",message: "Internal Server Error" });
     }
 }
 
