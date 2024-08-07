@@ -11,7 +11,7 @@ const detectDeviceType = function (userAgent) {
 }
 
 const scheduleStatusUpdate = function (urlId) {
-    // Schedule to change status after 5 minutes (300000 ms)
+    //       change status after 5 minutes (300000 ms)
             setTimeout(async () => {
             try {
             await URL.findByIdAndUpdate({ _id: urlId }, { Status: "NOT_AVAILABLE" });
