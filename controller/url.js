@@ -9,7 +9,9 @@ const REFERRERS_KEY = 'referring_websites';
 
 async function generateNewShortUrl(request, response) {
     try {
-        const { url } = request.body;
+        const  url = request.body.url;
+        console.log(url)
+        
 
         if (!url) {
             return response.status(400).json({ message: "Please provide a URL" });

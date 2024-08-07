@@ -4,7 +4,7 @@ const { generateNewShortUrl, redirectToOriginalUrl, handleGetAnalytics } = requi
 
 const radiscache=require("../config/radiscacheconfig.js")
 // Define routes
-router.post("/shortid", radiscache.route(),generateNewShortUrl);
+router.post("/shortid",generateNewShortUrl);
 router.get('/redirect/:shortId', radiscache.route(),redirectToOriginalUrl);
 router.get("/analytics/:shortId", radiscache.route(),handleGetAnalytics);
 
