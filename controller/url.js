@@ -10,7 +10,7 @@ const REFERRERS_KEY = 'referring_websites';
 async function generateNewShortUrl(request, response) {
     try {
         const  url = request.body.url;
-        console.log(url)
+       
         
 
         if (!url) {
@@ -28,7 +28,7 @@ async function generateNewShortUrl(request, response) {
         // SHORT CODE EXPIRES AFTER 5 MINS
         scheduleStatusUpdate(newUrl._id);
 
-        return response.status(200).json({ shortCode });
+        return response.status(200).json({status:"200",shortId: shortCode });
     } catch (error) {
         console.error('Error generating new short URL:', error);
         return response.status(500).json({ message: "Internal Server Error" });
@@ -44,7 +44,7 @@ async function redirectToOriginalUrl(request, response) {
         const referrer = request.headers['referer'] || 'direct';
 
         if (!shortId) {
-            return response.status(400).json({ message: 'ShortId is required' });
+            return response.status(400).json({status:"400", message: 'ShortId is required' });
         }
 
         const entry = await URL.findOneAndUpdate(
@@ -65,14 +65,15 @@ async function redirectToOriginalUrl(request, response) {
         );
 
         if (!entry) {
-            return response.status(404).json({ message: "ShortId not found or may have expired" });
+            return response.status(404).json({ status:"404",message: "ShortId not found or may have expired" });
         }
 
         await redisClient.hincrby(REFERRERS_KEY, referrer, 1);
         return response.status(302).redirect(entry.redirectURL);
+       
     } catch (error) {
         console.error('Error redirecting to original URL:', error);
-        return response.status(500).json({ message: 'Internal Server Error' });
+        return response.status(500).json({ status:"500",message: 'Internal Server Error' });
     }
 }
 
@@ -82,7 +83,7 @@ async function handleGetAnalytics(request, response) {
         const user = await URL.findOne({ shortId });
 
         if (!user) {
-            return response.status(404).json({ status: "Id not found" });
+            return response.status(404).json({ status: "404",message:"Short Id Not Found" });
         }
 
         const uniqueCount = await redisClient.scard(VISITORS_SET_KEY);
@@ -91,6 +92,7 @@ async function handleGetAnalytics(request, response) {
         const pieChartData = calculatePieChart(user);
 
         return response.status(200).json({
+            status:"200",
             originalUrl: user.redirectURL,
             totalVisits: user.count,
             uniqueVisitors: uniqueCount,
