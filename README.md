@@ -100,6 +100,14 @@ This project is a simple URL shortener service built with Node.js and Express.js
     }
     ```
 
+## Rate Limiting
+
+You can hit the API a maximum of 15 times within a 15-minute window because of rate limiting.
+
+## Expiration
+
+The short ID will expire in 5 minutes.
+
 ## Postman Collection
 
 You can use the provided Postman collection to test the API endpoints. Import the `postman_collection.json` file into Postman and use the predefined requests.
