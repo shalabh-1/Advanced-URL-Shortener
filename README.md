@@ -13,7 +13,7 @@ This project is a simple URL shortener service built with Node.js, Express.js, a
 - Node.js
 - npm (Node Package Manager)
 - Docker
-- Radix Server
+- Radis Server
 - MongoDB
 
 ## Installation
