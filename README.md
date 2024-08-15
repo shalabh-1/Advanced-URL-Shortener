@@ -1,6 +1,6 @@
 # URL Shortener Service
 
-This project is a simple URL shortener service built with Node.js, Express.js, and MongoDB, featuring short URL generation, redirection to original URLs, analytics for each short URL, and tracking unique visitors using Docker and Radix Server.
+This project is a simple URL shortener service built with Node.js, Express.js, and MongoDB, featuring short URL generation, redirection to original URLs, analytics for each short URL, and tracking unique visitors using Docker and Radis Server.
 
 ## Features
 
