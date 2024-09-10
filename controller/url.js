@@ -100,7 +100,6 @@ async function handleGetAnalytics(request, response) {
             visitsPerHour: visit.visitsPerHour,
             visitsPerDay: visit.visitsPerDay,
             pieChartData
-// hello
         });
     } catch (error) {
         console.error('Error retrieving analytics:', error);
